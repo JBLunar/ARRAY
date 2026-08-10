@@ -1,0 +1,812 @@
+========================================
+  WEB DESIGN EXAM NOTES — FULL EDITION
+  Grundforløb 2 — Danmark
+========================================
+  Every topic has: what it is, what it does,
+  why you use it, a note, and a real example.
+========================================
+
+
+════════════════════════════════════════
+  1. HTML — THE SKELETON OF A WEBPAGE
+════════════════════════════════════════
+
+HTML = HyperText Markup Language.
+Think of it like the bones of a body — holds everything together
+but isn't pretty until you add CSS (the skin and clothes).
+
+Every piece of content is wrapped in a TAG.
+Tags look like: <tagname> ... </tagname>
+First one OPENS it, second one CLOSES it (notice the slash /).
+Some tags have NO closing tag — we'll note those ones.
+
+
+════════════════════════════════════════
+  1A. PAGE STRUCTURE TAGS
+════════════════════════════════════════
+
+──────────────────────────────────────
+  <!DOCTYPE html>
+──────────────────────────────────────
+  What it is:   Not a tag — it's a declaration at the very top.
+  What it does: Tells the browser "this file uses modern HTML5".
+  Why use it:   Without it, some browsers display your page weirdly.
+  Note:         Always the VERY FIRST line. No closing tag.
+
+  Example:
+    <!DOCTYPE html>
+
+
+──────────────────────────────────────
+  <html>
+──────────────────────────────────────
+  What it is:   The root element — wraps the entire page.
+  What it does: Tells the browser where your HTML starts and ends.
+  Why use it:   Required — every HTML file must have it.
+  Note:         Everything goes INSIDE <html> and </html>.
+
+  Example:
+    <html>
+      ... everything goes here ...
+    </html>
+
+
+──────────────────────────────────────
+  <head>
+──────────────────────────────────────
+  What it is:   The invisible settings section of your page.
+  What it does: Contains info FOR the browser, not shown to users.
+  Why use it:   This is where you link CSS files, set the title, etc.
+  Note:         Users never SEE what's in <head> but it affects everything.
+
+  Example:
+    <head>
+      <title>My Website</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
+
+
+──────────────────────────────────────
+  <title>
+──────────────────────────────────────
+  What it is:   Sets the name shown in the browser tab.
+  What it does: Displays a title at the top of the browser window.
+  Why use it:   Helps users know which tab is which. Also used by Google.
+  Note:         Goes inside <head>, NOT in <body>.
+
+  Example:
+    <title>Lars's Portfolio</title>
+    -- The browser tab will now show: Lars's Portfolio
+
+
+──────────────────────────────────────
+  <body>
+──────────────────────────────────────
+  What it is:   The visible part of your webpage.
+  What it does: Everything inside <body> is shown on screen to the user.
+  Why use it:   If it's not in <body>, the user can't see it.
+  Note:         All headings, text, images, buttons go here.
+
+  Example:
+    <body>
+      <h1>Welcome!</h1>
+      <p>This is visible on screen.</p>
+    </body>
+
+
+  ── FULL STRUCTURE EXAMPLE ──────────────
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>My First Page</title>
+        <link rel="stylesheet" href="style.css">
+      </head>
+      <body>
+        <h1>Hello World!</h1>
+        <p>This is my first webpage.</p>
+      </body>
+    </html>
+
+
+════════════════════════════════════════
+  1B. HEADING TAGS  h1 through h6
+════════════════════════════════════════
+
+Headings are like titles in a Word document.
+h1 = biggest and most important. h6 = smallest.
+Only use ONE h1 per page (the main title).
+
+──────────────────────────────────────
+  <h1>
+──────────────────────────────────────
+  What it is:   The biggest heading — the main title of the page.
+  What it does: Displays large, bold text. Signals the main topic to Google.
+  Why use it:   Every page should have exactly ONE h1 as its main title.
+  Note:         Only ever ONE h1 per page.
+
+  Example:
+    <h1>Welcome to My Cooking Blog</h1>
+
+
+──────────────────────────────────────
+  <h2>
+──────────────────────────────────────
+  What it is:   A section heading — one level below h1.
+  What it does: Marks the start of a new section or topic.
+  Why use it:   Organises your page into clear sections.
+  Note:         You CAN use multiple h2s on one page.
+
+  Example:
+    <h2>My Favourite Recipes</h2>
+    <h2>About Me</h2>
+    -- Each one starts a new section.
+
+
+──────────────────────────────────────
+  <h3> through <h6>
+──────────────────────────────────────
+  What it is:   Smaller sub-headings, getting smaller each level.
+  What it does: Creates hierarchy — headings within headings.
+  Why use it:   For sub-topics inside a section.
+  Note:         h4, h5, h6 are rarely used but good to know.
+
+  Example:
+    <h2>Recipes</h2>
+      <h3>Pasta Dishes</h3>
+        <h4>Carbonara</h4>
+        <h4>Bolognese</h4>
+      <h3>Desserts</h3>
+        <h4>Chocolate Cake</h4>
+
+
+════════════════════════════════════════
+  1C. TEXT TAGS
+════════════════════════════════════════
+
+──────────────────────────────────────
+  <p>
+──────────────────────────────────────
+  What it is:   A paragraph of text.
+  What it does: Wraps a block of text and adds space above and below it.
+  Why use it:   For all normal body text — articles, descriptions, etc.
+  Note:         Each <p> automatically starts on a new line with spacing.
+
+  Example:
+    <p>I love baking. I have been doing it for 5 years.</p>
+    <p>My favourite thing to bake is chocolate cake.</p>
+    -- These appear as two separate paragraphs with a gap between them.
+
+
+──────────────────────────────────────
+  <strong>
+──────────────────────────────────────
+  What it is:   Makes text bold AND marks it as important.
+  What it does: Displays text in bold font weight.
+  Why use it:   To highlight important words or warnings in a sentence.
+  Note:         <b> also bolds text, but <strong> says it's IMPORTANT.
+
+  Example:
+    <p>You must <strong>never</strong> share your password.</p>
+    -- The word "never" appears in bold.
+
+
+──────────────────────────────────────
+  <em>
+──────────────────────────────────────
+  What it is:   Makes text italic AND marks it as emphasised.
+  What it does: Displays text in italic style.
+  Why use it:   To stress or emphasise a word in a sentence.
+  Note:         <i> also makes italic, but <em> has meaning (emphasis).
+
+  Example:
+    <p>I <em>really</em> want to go to the concert.</p>
+    -- The word "really" appears in italic.
+
+
+──────────────────────────────────────
+  <br>
+──────────────────────────────────────
+  What it is:   A line break — forces the next text to a new line.
+  What it does: Breaks the line without starting a whole new paragraph.
+  Why use it:   For addresses, poems, any forced new line within a paragraph.
+  Note:         NO closing tag! Just write <br> by itself.
+
+  Example:
+    <p>
+      Lars Jensen<br>
+      Skolegade 12<br>
+      9000 Aalborg
+    </p>
+    -- Each line breaks without extra paragraph spacing.
+
+
+──────────────────────────────────────
+  <hr>
+──────────────────────────────────────
+  What it is:   A horizontal rule — draws a line across the page.
+  What it does: Creates a visible dividing line between sections.
+  Why use it:   To visually separate two sections of content.
+  Note:         NO closing tag!
+
+  Example:
+    <h2>Section One</h2>
+    <p>Some content here.</p>
+    <hr>
+    <h2>Section Two</h2>
+    <p>New section starts here.</p>
+
+
+──────────────────────────────────────
+  <span>
+──────────────────────────────────────
+  What it is:   An inline container — wraps part of a line of text.
+  What it does: Lets you style a specific word or phrase inside a paragraph.
+  Why use it:   When you want to colour or style ONE word without line breaks.
+  Note:         Unlike <div>, span stays INLINE — doesn't break to new line.
+
+  Example:
+    <p>My favourite colour is <span style="color:red">red</span>.</p>
+    -- Only the word "red" appears in red colour.
+
+
+════════════════════════════════════════
+  1D. LINKS — <a> TAG
+════════════════════════════════════════
+
+──────────────────────────────────────
+  <a href="...">
+──────────────────────────────────────
+  What it is:   The anchor tag — creates clickable links.
+  What it does: When clicked, takes the user to another page or website.
+  Why use it:   Essential for navigation — every website uses links.
+  Note:         href is the attribute that holds the URL/destination.
+                Without href, the link goes nowhere.
+
+  Example — external website:
+    <a href="https://www.google.com">Go to Google</a>
+
+  Example — another page on YOUR site:
+    <a href="about.html">About Me</a>
+
+  Example — open in a NEW tab:
+    <a href="https://www.google.com" target="_blank">Google (new tab)</a>
+
+  Example — jump to a section on SAME page:
+    <a href="#contact">Jump to Contact</a>
+    ...
+    <h2 id="contact">Contact Me</h2>
+
+  Example — image as a link:
+    <a href="https://google.com">
+      <img src="google-logo.png" alt="Google">
+    </a>
+
+
+════════════════════════════════════════
+  1E. IMAGES — <img> TAG
+════════════════════════════════════════
+
+──────────────────────────────────────
+  <img>
+──────────────────────────────────────
+  What it is:   Embeds an image into the page.
+  What it does: Displays a photo, logo, or graphic on screen.
+  Why use it:   Images make pages visual and engaging.
+  Note:         NO closing tag! Needs src and alt attributes.
+                src = where the image file is.
+                alt = text shown if image fails, read by screen readers.
+
+  Example — image in same folder:
+    <img src="cat.jpg" alt="A fluffy orange cat">
+
+  Example — image from the internet:
+    <img src="https://example.com/logo.png" alt="Company logo">
+
+  Example — with size:
+    <img src="photo.jpg" alt="Holiday" width="400" height="300">
+
+
+════════════════════════════════════════
+  1F. LISTS
+════════════════════════════════════════
+
+──────────────────────────────────────
+  <ul> — Unordered List (bullet points)
+──────────────────────────────────────
+  What it is:   A list where order doesn't matter.
+  What it does: Displays items with bullet points by default.
+  Why use it:   Shopping lists, feature lists, navigation menus.
+  Note:         ul = unordered list. Each item uses <li>.
+
+  Example:
+    <ul>
+      <li>Milk</li>
+      <li>Eggs</li>
+      <li>Bread</li>
+    </ul>
+    Result: • Milk  • Eggs  • Bread
+
+
+──────────────────────────────────────
+  <ol> — Ordered List (numbered)
+──────────────────────────────────────
+  What it is:   A list where order MATTERS.
+  What it does: Displays items numbered 1, 2, 3... automatically.
+  Why use it:   Instructions, steps, recipes, rankings.
+  Note:         ol = ordered list. Each item uses <li>.
+
+  Example:
+    <ol>
+      <li>Preheat the oven to 180 degrees</li>
+      <li>Mix the flour and sugar</li>
+      <li>Add eggs and butter</li>
+      <li>Bake for 30 minutes</li>
+    </ol>
+    Result: 1. Preheat...  2. Mix...  3. Add...  4. Bake...
+
+
+──────────────────────────────────────
+  <li> — List Item
+──────────────────────────────────────
+  What it is:   A single item inside a list.
+  What it does: Represents one entry in a ul or ol list.
+  Why use it:   MUST use li inside ul or ol — required.
+  Note:         li = list item. Always goes inside <ul> or <ol>.
+
+  Example:
+    <li>This is one item</li>
+
+
+════════════════════════════════════════
+  1G. CONTAINER / LAYOUT TAGS
+════════════════════════════════════════
+
+──────────────────────────────────────
+  <div>
+──────────────────────────────────────
+  What it is:   A generic box/container element.
+  What it does: Groups other elements together into a block.
+  Why use it:   To organise sections and apply CSS to groups of elements.
+  Note:         BLOCK element — takes full width, next element goes below.
+                No visual appearance until you style it with CSS.
+
+  Example:
+    <div style="background:lightblue; padding:20px;">
+      <h2>About Me</h2>
+      <p>I am a student in Aalborg.</p>
+    </div>
+    -- Creates a light blue box with the heading and paragraph inside.
+
+
+──────────────────────────────────────
+  <header>
+──────────────────────────────────────
+  What it is:   A semantic tag for the top section of a page.
+  What it does: Marks the header area — usually has logo and navigation.
+  Why use it:   Makes HTML more readable and meaningful.
+  Note:         Works like a div but its name describes its PURPOSE.
+
+  Example:
+    <header>
+      <h1>My Website</h1>
+      <nav>...</nav>
+    </header>
+
+
+──────────────────────────────────────
+  <nav>
+──────────────────────────────────────
+  What it is:   A tag specifically for navigation menus.
+  What it does: Wraps navigation links so browsers know it's a menu.
+  Why use it:   Semantic — tells the browser "this is the menu".
+  Note:         Usually contains a <ul> with <a> tags inside.
+
+  Example:
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+
+──────────────────────────────────────
+  <main>
+──────────────────────────────────────
+  What it is:   The main content area of the page.
+  What it does: Wraps the primary content — what the page is actually about.
+  Why use it:   Tells browsers and screen readers where the main content is.
+  Note:         Should only appear ONCE per page.
+
+  Example:
+    <main>
+      <h2>Today's Article</h2>
+      <p>Here is the main content...</p>
+    </main>
+
+
+──────────────────────────────────────
+  <section>
+──────────────────────────────────────
+  What it is:   A thematic section of content within a page.
+  What it does: Groups related content together under one topic.
+  Why use it:   Organises long pages into logical chunks.
+  Note:         Each section should ideally have its own heading.
+
+  Example:
+    <section>
+      <h2>Our Services</h2>
+      <p>We offer web design and photography.</p>
+    </section>
+    <section>
+      <h2>Pricing</h2>
+      <p>Prices start from 500 DKK.</p>
+    </section>
+
+
+──────────────────────────────────────
+  <footer>
+──────────────────────────────────────
+  What it is:   The bottom section of a page.
+  What it does: Contains copyright, contact links, social media, etc.
+  Why use it:   Standard structure — users always expect a footer.
+  Note:         Sits at the very bottom, outside of <main>.
+
+  Example:
+    <footer>
+      <p>© 2025 Lars Jensen. All rights reserved.</p>
+      <a href="contact.html">Contact</a>
+    </footer>
+
+
+════════════════════════════════════════
+  1H. TABLES
+════════════════════════════════════════
+
+Tables show data in rows and columns — like a spreadsheet.
+Use for DATA, not for layout (use CSS flexbox for layout).
+
+──────────────────────────────────────
+  <table>
+──────────────────────────────────────
+  What it is:   The outer container for the whole table.
+  What it does: Tells the browser "everything inside is a table".
+  Why use it:   Required to start any table.
+  Note:         All tr, th, td tags go INSIDE <table>.
+
+──────────────────────────────────────
+  <tr> — Table Row
+──────────────────────────────────────
+  What it is:   One horizontal row in the table.
+  What it does: Groups all cells that belong on the same row.
+  Why use it:   Each row of data needs a <tr>.
+  Note:         tr = table row. Goes inside <table>.
+
+──────────────────────────────────────
+  <th> — Table Header
+──────────────────────────────────────
+  What it is:   A header cell — the column title.
+  What it does: Displays bold, centred text automatically.
+  Why use it:   Labels each column so readers know what the data is.
+  Note:         th = table header. Goes inside <tr>.
+
+──────────────────────────────────────
+  <td> — Table Data
+──────────────────────────────────────
+  What it is:   A normal data cell in the table.
+  What it does: Holds one piece of data.
+  Why use it:   For all the actual content (not headers).
+  Note:         td = table data. Goes inside <tr>.
+
+  Full table example:
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>City</th>
+      </tr>
+      <tr>
+        <td>Lars</td>
+        <td>20</td>
+        <td>Aalborg</td>
+      </tr>
+      <tr>
+        <td>Mia</td>
+        <td>22</td>
+        <td>Copenhagen</td>
+      </tr>
+    </table>
+
+    Result:
+    | Name | Age | City       |
+    |------|-----|------------|
+    | Lars | 20  | Aalborg    |
+    | Mia  | 22  | Copenhagen |
+
+
+════════════════════════════════════════
+  1I. FORMS
+════════════════════════════════════════
+
+Forms let users send information — login, contact, search, etc.
+
+──────────────────────────────────────
+  <form>
+──────────────────────────────────────
+  What it is:   The container that wraps all form elements.
+  What it does: Groups inputs together and handles submission.
+  Why use it:   Required to collect and send user data.
+  Note:         action="" says where to send data. method="post" is secure.
+
+  Example:
+    <form action="submit.php" method="post">
+      ... inputs go here ...
+    </form>
+
+
+──────────────────────────────────────
+  <input type="text">
+──────────────────────────────────────
+  What it is:   A single-line text box.
+  What it does: Creates a box where users can type text.
+  Why use it:   For names, usernames, search bars.
+  Note:         name="" labels the data when sent. placeholder="" shows hint.
+
+  Example:
+    <label>Your name:</label>
+    <input type="text" name="username" placeholder="Type your name">
+
+
+──────────────────────────────────────
+  <input type="email">
+──────────────────────────────────────
+  What it is:   A text box that validates email format.
+  What it does: Checks the input has @ and a domain — warns if wrong.
+  Why use it:   For email fields — browser validates the format automatically.
+  Note:         On mobile shows an email keyboard with @ key.
+
+  Example:
+    <input type="email" name="email" placeholder="you@example.com">
+
+
+──────────────────────────────────────
+  <input type="password">
+──────────────────────────────────────
+  What it is:   A text box that hides what the user types.
+  What it does: Shows dots or asterisks instead of actual characters.
+  Why use it:   For passwords — so nobody watching can read it.
+  Note:         Still sends real text — only the display is hidden.
+
+  Example:
+    <input type="password" name="password" placeholder="Enter password">
+
+
+──────────────────────────────────────
+  <input type="checkbox">
+──────────────────────────────────────
+  What it is:   A tick box — can be checked or unchecked.
+  What it does: Lets users select one or more options.
+  Why use it:   For multiple-choice selections, terms agreement.
+  Note:         Add the word "checked" to make it ticked by default.
+
+  Example:
+    <input type="checkbox" name="agree"> I agree to the terms
+    <input type="checkbox" name="news" checked> Subscribe to newsletter
+
+
+──────────────────────────────────────
+  <input type="radio">
+──────────────────────────────────────
+  What it is:   A round button — only ONE in a group can be chosen.
+  What it does: Lets users pick exactly ONE option from a group.
+  Why use it:   For yes/no, gender, payment method — pick one only.
+  Note:         All options in a group MUST share the same name="" value.
+
+  Example:
+    <input type="radio" name="gender" value="male">   Male
+    <input type="radio" name="gender" value="female"> Female
+    <input type="radio" name="gender" value="other">  Other
+    -- Only one can be selected at a time.
+
+
+──────────────────────────────────────
+  <input type="submit">
+──────────────────────────────────────
+  What it is:   A button that submits the form.
+  What it does: When clicked, sends all the form data.
+  Why use it:   Every form needs a submit button.
+  Note:         value="" sets the text shown on the button.
+
+  Example:
+    <input type="submit" value="Send Message">
+    -- Creates a button that says "Send Message".
+
+
+──────────────────────────────────────
+  <textarea>
+──────────────────────────────────────
+  What it is:   A big, multi-line resizable text box.
+  What it does: Lets users type longer messages or comments.
+  Why use it:   For contact forms, feedback, descriptions.
+  Note:         rows and cols set the starting size. HAS a closing tag.
+
+  Example:
+    <textarea name="message" rows="5" cols="40"
+              placeholder="Write your message here..."></textarea>
+
+
+──────────────────────────────────────
+  <select> and <option>
+──────────────────────────────────────
+  What it is:   A dropdown menu.
+  What it does: Shows a list the user can pick from.
+  Why use it:   Country pickers, category selection, quantity.
+  Note:         <select> = container, <option> = each choice.
+                value="" is what gets sent, text between tags is shown.
+
+  Example:
+    <select name="country">
+      <option value="dk">Denmark</option>
+      <option value="se">Sweden</option>
+      <option value="no">Norway</option>
+    </select>
+
+
+──────────────────────────────────────
+  <label>
+──────────────────────────────────────
+  What it is:   A text label linked to an input field.
+  What it does: Describes what an input is for. Clicking it activates the input.
+  Why use it:   Accessibility — makes forms much easier to use.
+  Note:         Use for="inputid" matching the input's id="" to link them.
+
+  Example:
+    <label for="username">Your name:</label>
+    <input type="text" id="username" name="username">
+    -- Clicking "Your name:" now focuses the text box.
+
+
+──────────────────────────────────────
+  <button>
+──────────────────────────────────────
+  What it is:   A clickable button element.
+  What it does: Triggers actions when clicked (JS or form submit).
+  Why use it:   More flexible than input[type=submit] — can contain HTML.
+  Note:         type="submit" submits a form. type="button" is for JS.
+
+  Example:
+    <button type="submit">Send Form</button>
+    <button type="button" onclick="alert('Hello!')">Say Hello</button>
+
+
+  ── FULL FORM EXAMPLE ────────────────
+
+    <form action="contact.php" method="post">
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Lars Jensen">
+      <br><br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="lars@email.dk">
+      <br><br>
+
+      <label for="msg">Message:</label><br>
+      <textarea id="msg" name="message" rows="4" cols="40"></textarea>
+      <br><br>
+
+      <input type="submit" value="Send Message">
+
+    </form>
+
+
+════════════════════════════════════════
+  1J. HTML ATTRIBUTES
+════════════════════════════════════════
+
+Attributes give extra information to tags. Go INSIDE the opening tag.
+Format is always: name="value"
+
+──────────────────────────────────────
+  id=""
+──────────────────────────────────────
+  What it is:   A unique identifier for ONE specific element.
+  What it does: Gives an element a name used ONCE on the whole page.
+  Why use it:   To target it with CSS (#id) or JS (getElementById).
+  Note:         Think of it like a CPR number — totally unique.
+
+  Example:
+    <h1 id="pageTitle">Welcome</h1>
+    -- CSS: #pageTitle { color: blue; }
+    -- JS:  document.getElementById("pageTitle")
+
+
+──────────────────────────────────────
+  class=""
+──────────────────────────────────────
+  What it is:   A shared label that MANY elements can have.
+  What it does: Lets you style multiple elements the same way at once.
+  Why use it:   When multiple elements should look the same.
+  Note:         One element can have multiple classes: class="box big red"
+
+  Example:
+    <p class="highlight">Text 1</p>
+    <p class="highlight">Text 2</p>
+    -- CSS: .highlight { background: yellow; }  — both get yellow!
+
+
+──────────────────────────────────────
+  src=""
+──────────────────────────────────────
+  What it is:   The source — points to a file.
+  What it does: Tells the browser WHERE to find an image, video, or script.
+  Why use it:   Required for <img>, <script>, <video>, <audio>.
+  Note:         Can be a file path (relative) or a full URL.
+
+  Example:
+    <img src="images/cat.jpg" alt="Cat">
+    <script src="app.js"></script>
+
+
+──────────────────────────────────────
+  href=""
+──────────────────────────────────────
+  What it is:   Hyperlink Reference — the destination of a link.
+  What it does: Tells the browser WHERE to go when the link is clicked.
+  Why use it:   Required for <a> links and <link> CSS files.
+  Note:         Can be a URL, a file, or a page anchor (#section).
+
+  Example:
+    <a href="https://google.com">Visit Google</a>
+    <link rel="stylesheet" href="style.css">
+
+
+──────────────────────────────────────
+  style=""
+──────────────────────────────────────
+  What it is:   Inline CSS — styling written directly on the tag.
+  What it does: Applies CSS styles to just that one element.
+  Why use it:   Quick one-off styling (external CSS files are better practice).
+  Note:         Use property:value pairs, separated by semicolons.
+
+  Example:
+    <p style="color:red; font-size:20px;">This text is red and large.</p>
+
+
+──────────────────────────────────────
+  placeholder=""
+──────────────────────────────────────
+  What it is:   Hint text shown inside an input before the user types.
+  What it does: Disappears when the user starts typing.
+  Why use it:   Helps users understand what to enter in the field.
+  Note:         Only works on <input> and <textarea>.
+
+  Example:
+    <input type="text" placeholder="Enter your full name">
+    -- Shows "Enter your full name" in grey until user types.
+
+
+──────────────────────────────────────
+  target="_blank"
+──────────────────────────────────────
+  What it is:   Attribute on <a> tags that opens link in a NEW tab.
+  What it does: Forces the link to open in a new browser tab.
+  Why use it:   When linking to external sites — keeps your page open too.
+  Note:         Only used on <a> tags.
+
+  Example:
+    <a href="https://dr.dk" target="_blank">Go to DR (new tab)</a>
+
+
+──────────────────────────────────────
+  alt=""
+──────────────────────────────────────
+  What it is:   Alternative text for an image.
+  What it does: Shows if the image fails to load. Read by screen readers.
+  Why use it:   Accessibility and good practice — always add it.
+  Note:         Required attribute on every <img> tag.
+
+  Example:
+    <img src="dog.jpg" alt="A brown Labrador puppy playing in grass">
