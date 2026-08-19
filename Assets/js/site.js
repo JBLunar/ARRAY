@@ -68,11 +68,16 @@ function renderWishList() {
     const oensker = document.createElement("p");
     oensker.textContent = item.NyWish;
 
+    const redigerknap = document.createElement("button");
+    redigerknap.textContent = "Rediger";
+    redigerknap.addEventListener("click", () => editWishCallback(index));
+
     const sletknap = document.createElement("button");
     sletknap.textContent = "Slet";
     sletknap.addEventListener("click", () => deleteWishCallback(index));
 
     oenskeListeDiv.appendChild(oensker);
+    oenskeListeDiv.appendChild(redigerknap);
     oenskeListeDiv.appendChild(sletknap);
     oenskeListeSection.appendChild(oenskeListeDiv);
   });
@@ -99,6 +104,18 @@ function addWishCallback() {
   }
 }
 
+// Denne funktion køres, når brugeren klikker på Rediger.
+// Den spørger brugeren om den nye tekst og opdaterer ønsket.
+function editWishCallback(index) {
+  const nuværendeØnske = array[index].NyWish;
+  const nytØnske = prompt("Rediger dit ønske:", nuværendeØnske);
+
+  if (nytØnske !== null && nytØnske.trim() !== "") {
+    UpdateData(index, nytØnske);
+    renderWishList();
+  }
+}
+
 // Denne funktion køres, når brugeren klikker på Slet.
 // Den fjerner ønsket på den valgte plads og viser listen igen.
 function deleteWishCallback(index) {
@@ -108,55 +125,85 @@ function deleteWishCallback(index) {
 //#endregion
 
 //#region model
+
+// Denne funktion gemmer arrayet i localStorage.
+// localStorage.setItem() gemmer data på brugerens computer.
+function writeLocalStorage() {
+  localStorage.setItem("ønskeListe", JSON.stringify(array));
+}
+
+// Denne funktion henter arrayet fra localStorage.
+// JSON.parse() omdanner teksten tilbage til et array.
+function readLocalStorage() {
+  const data = localStorage.getItem("ønskeListe");
+  
+  if (data !== null) {
+    array = JSON.parse(data);
+  }
+}
+
 // Denne funktion laver et nyt ønske og lægger det i arrayet.
+// CREATE: LÆS -> OPRET -> GEM
 // Eksempel: { NyWish: "Jeg vil have en cykel" }
 function CreateData(NyWish) {
+  readLocalStorage();           // LÆS: hent data fra localStorage
   const data = { NyWish };
-  array.push(data);
+  array.push(data);              // OPRET: tilføj til array
+  writeLocalStorage();           // GEM: gem i localStorage
   return "ok";
 }
 
 // Denne funktion læser et ønske ud fra et index.
-// Hvis ønsket ikke findes, returnerer den en besked i stedet for at lave fejl.
+// READ: LÆS -> VIS
 function ReadData(index) {
+  readLocalStorage();            // LÆS: hent data fra localStorage
   const ViewData = array[index];
 
   if (ViewData === undefined) {
     return "Data not found";
   }
 
-  return ViewData;
+  return ViewData;               // VIS: returner data
 }
 
 // Denne funktion ændrer teksten på et eksisterende ønske.
+// UPDATE: LÆS -> OPDATER -> GEM
 function UpdateData(index, newNyWish) {
+  readLocalStorage();            // LÆS: hent data fra localStorage
   const ViewData = array[index];
 
   if (ViewData === undefined) {
     return "Data not found";
   }
 
-  ViewData.NyWish = newNyWish;
+  ViewData.NyWish = newNyWish;   // OPDATER: ændrer teksten
+  writeLocalStorage();           // GEM: gem i localStorage
   return "ok";
 }
 
 // Denne funktion sletter et element fra arrayet med splice(index, 1).
-// Det betyder: start på dette index og slet 1 ting.
+// DELETE: LÆS -> SLET -> GEM
 function DeleteData(index) {
+  readLocalStorage();            // LÆS: hent data fra localStorage
   const ViewData = array[index];
 
   if (ViewData === undefined) {
     return "Data not found";
   }
 
-  array.splice(index, 1);
+  array.splice(index, 1);        // SLET: fjern fra array
+  writeLocalStorage();           // GEM: gem i localStorage
   return "ok";
 }
 //#endregion
 
-// Starter appen ved at lave selve HTML-strukturen og vise listen.
+// Starter appen ved at hente gemt data, lave HTML-strukturen og vise listen.
+readLocalStorage();              // LÆS FØRST: hent alle gemte ønsker
 renderStatics("wishList");
 renderWishList();
+
+
+
 
 
 
